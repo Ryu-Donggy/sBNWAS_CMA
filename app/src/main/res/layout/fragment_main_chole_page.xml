@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="commonUtil"
+            type="com.familidata.sbnwas_cma.util.CommonUtil" />
+
+        <variable
+            name="controller"
+            type="com.familidata.sbnwas_cma.base.view.IController" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="#edeef2">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/ns"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginStart="5dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp"
+                android:background="@drawable/ract_rounded15_e5e6ea"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/blood_2_icon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="37dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:lineSpacingExtra="2sp"
+                        android:text="@string/cho"
+                        android:textColor="#000000"
+                        android:textSize="19dp"
+                        android:textStyle="normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llChoTc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvChoTc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llChoTg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ract_rounded15_e5e6ea"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content">-->
+
+                    <!--                        <ImageView-->
+                    <!--                            android:layout_width="18dp"-->
+                    <!--                            android:layout_height="18dp"-->
+                    <!--                            android:layout_marginStart="14dp"-->
+                    <!--                            android:layout_marginTop="14dp"-->
+                    <!--                            android:src="@drawable/liver_icon"-->
+                    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                            app:layout_constraintTop_toTopOf="parent" />-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_marginStart="37dp"-->
+                    <!--                            android:layout_marginTop="10dp"-->
+                    <!--                            android:fontFamily="@font/pretendard_semibold"-->
+                    <!--                            android:lineSpacingExtra="2sp"-->
+                    <!--                            android:text="@string/cho_tri"-->
+                    <!--                            android:textColor="#000000"-->
+                    <!--                            android:textSize="19dp"-->
+                    <!--                            android:textStyle="normal"-->
+                    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                            app:layout_constraintTop_toTopOf="parent" />-->
+                    <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvChoTg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llChoHdl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ract_rounded15_e5e6ea"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content">-->
+
+                    <!--                        <ImageView-->
+                    <!--                            android:layout_width="18dp"-->
+                    <!--                            android:layout_height="18dp"-->
+                    <!--                            android:layout_marginStart="14dp"-->
+                    <!--                            android:layout_marginTop="14dp"-->
+                    <!--                            android:src="@drawable/blood_2_icon"-->
+                    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                            app:layout_constraintTop_toTopOf="parent" />-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_marginStart="37dp"-->
+                    <!--                            android:layout_marginTop="10dp"-->
+                    <!--                            android:fontFamily="@font/pretendard_semibold"-->
+                    <!--                            android:lineSpacingExtra="2sp"-->
+                    <!--                            android:text="@string/cho_hdl"-->
+                    <!--                            android:textColor="#000000"-->
+                    <!--                            android:textSize="19dp"-->
+                    <!--                            android:textStyle="normal"-->
+                    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                            app:layout_constraintTop_toTopOf="parent" />-->
+                    <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvHdl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llChoLdl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ract_rounded15_e5e6ea"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content">-->
+
+                    <!--                        <ImageView-->
+                    <!--                            android:layout_width="18dp"-->
+                    <!--                            android:layout_height="18dp"-->
+                    <!--                            android:layout_marginStart="14dp"-->
+                    <!--                            android:layout_marginTop="14dp"-->
+                    <!--                            android:src="@drawable/blood_2_icon"-->
+                    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                            app:layout_constraintTop_toTopOf="parent" />-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_marginStart="37dp"-->
+                    <!--                            android:layout_marginTop="10dp"-->
+                    <!--                            android:fontFamily="@font/pretendard_semibold"-->
+                    <!--                            android:lineSpacingExtra="2sp"-->
+                    <!--                            android:text="@string/cho_ldl"-->
+                    <!--                            android:textColor="#000000"-->
+                    <!--                            android:textSize="19dp"-->
+                    <!--                            android:textStyle="normal"-->
+                    <!--                            app:layout_constraintStart_toStartOf="parent"-->
+                    <!--                            app:layout_constraintTop_toTopOf="parent" />-->
+                    <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvChoLdl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

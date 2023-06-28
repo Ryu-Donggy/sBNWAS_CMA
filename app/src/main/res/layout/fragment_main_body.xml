@@ -1,0 +1,1336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="ecgDate"
+            type="java.lang.String" />
+
+        <variable
+            name="commonUtil"
+            type="com.familidata.sbnwas_cma.util.CommonUtil" />
+
+        <variable
+            name="controller"
+            type="com.familidata.sbnwas_cma.base.view.IController" />
+
+        <variable
+            name="watchBlp"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBlp" />
+
+        <variable
+            name="watchHrt"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioHtr" />
+
+        <variable
+            name="watchOxs"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioOxs" />
+
+        <variable
+            name="watchEcg"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioEcg" />
+
+        <variable
+            name="watchSleep"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioSleepHeader" />
+
+        <variable
+            name="watchCalorie"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioCalorie" />
+
+        <variable
+            name="watchStep"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioStep" />
+
+        <variable
+            name="watchDistance"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioDistance" />
+
+        <variable
+            name="watchActivity"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioActivity" />
+
+
+        <variable
+            name="bmiA"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+
+        <variable
+            name="bmiB"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+
+        <variable
+            name="bmiC"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+
+        <variable
+            name="bmiD"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+
+        <variable
+            name="bmiE"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="#edeef2">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/ns"
+            android:layout_width="match_parent"
+            android:layout_height="205dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/ract_rounded15_e5e6ea"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginStart="5dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clWatch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="18dp">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/watch"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="33dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/pretendard_semibold"
+                    android:lineSpacingExtra="2sp"
+                    android:text="@string/watch_title"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="44dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toStartOf="@id/ll2"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clWatchBlp"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}">
+
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/heart"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvTitleBlp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/blp_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{watchBlp.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvTitleBlp"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvFirst"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{watchBlp.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="106" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:fontFamily="@font/pretendard_thin"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="/"
+                                    android:textColor="#828282"
+                                    android:textSize="25dp"
+                                    android:textStyle="normal" />
+
+                                <TextView
+                                    android:id="@+id/tvSecond"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{watchBlp.second}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="106" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clWatchHtr"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="11dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/heart_2"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvTitleHtr"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/htr_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{watchHrt.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvTitleHtr"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{watchHrt.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="106" />
+
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clWatchOxs"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="11dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}">
+
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/air"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvTitleOxs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/oxs_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{watchOxs.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvTitleOxs"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{watchOxs.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="106" />
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clWatchEcg"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="11dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/heartline"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvTitleEcg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/ecg_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{ecgDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvTitleEcg"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <ImageView
+                                    android:id="@+id/ivEcg"
+                                    android:layout_width="51dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginBottom="3dp"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/heartline_2"
+                                    android:visibility="gone" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ll2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@id/ll1"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clWatchSleep"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="15dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/bed_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvTitleSleep"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/sleep_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{watchSleep.date}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvTitleSleep"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{watchSleep.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="16" />
+
+                                <TextView
+                                    android:id="@+id/tvSt"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_regular"
+                                    android:gravity="end"
+                                    android:lineSpacingExtra="3sp"
+                                    android:text="@string/hour"
+                                    android:textColor="#000000"
+                                    android:textSize="15dp"
+                                    android:textStyle="normal" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="3dp"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{watchSleep.second}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="06" />
+
+                                <TextView
+                                    android:id="@+id/tvSm"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_regular"
+                                    android:gravity="end"
+                                    android:lineSpacingExtra="3sp"
+                                    android:text="@string/minute"
+                                    android:textColor="#000000"
+                                    android:textSize="15dp"
+                                    android:textStyle="normal" />
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clWatchCalorie"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="15dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/cal_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvTitleCalorie"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/calorie_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{watchCalorie.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvTitleCalorie"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{watchCalorie.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="16" />
+
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clWatchStep"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="15dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/walk_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvTitleStep"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/walk_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{watchStep.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvTitleStep"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{watchStep.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="16" />
+
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clWatchDistance"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="15dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/distance_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvTitleDistance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/distance_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{watchDistance.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvTitleDistance"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{watchDistance.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="16" />
+
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clWatchActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginEnd="15dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/activity_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvTitleActivity"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/activity_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{watchActivity.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvTitleActivity"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{watchActivity.second}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="16" />
+
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/ns2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ns">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_analyze"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_marginEnd="23dp"
+                    android:background="@drawable/ract_rounded15_547fe8"
+                    android:onClick="@{(v) -> controller.onClicking(v)}">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <TextView
+                            android:id="@+id/z"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:gravity="center"
+                            android:lineSpacingExtra="2sp"
+                            android:text="@string/health_total_anal"
+                            android:textColor="#ffffff"
+                            android:textSize="17dp"
+                            android:textStyle="normal"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginStart="6dp"
+                            android:src="@drawable/start_icon_w"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/z"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clAllBMI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/ract_rounded15_e5e6ea"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/bmi_icon_b"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="33dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/pretendard_semibold"
+                        android:lineSpacingExtra="2sp"
+                        android:text="@string/all_bmi_title"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="normal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clWeight"
+                        android:layout_width="0dp"
+                        android:layout_height="57dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="44dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/ract_rounded15_ffffff"
+                        android:onClick="@{(v) -> controller.onClicking(v)}"
+                        app:layout_constraintEnd_toStartOf="@id/clBFM"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="9dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/weight_icon"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvWeightTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="23dp"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="2sp"
+                            android:text="@string/weight_title"
+                            android:textColor="#000000"
+                            android:textSize="13dp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="9dp"
+                            android:fontFamily="@font/pretendard_regular"
+                            android:lineSpacingExtra="2sp"
+                            android:text="@{bmiA.mainDate}"
+                            android:textColor="#bbbbbb"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toEndOf="@+id/tvWeightTitle"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="2023-02-08" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+
+                            <TextView
+                                android:id="@+id/tvWeightSecond"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/pretendard_bold"
+                                android:lineSpacingExtra="6sp"
+                                android:text="@{bmiA.first}"
+                                android:textColor="#000000"
+                                android:textSize="25dp"
+                                tools:text="106" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clBFM"
+                        android:layout_width="0dp"
+                        android:layout_height="57dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="44dp"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/ract_rounded15_ffffff"
+                        android:onClick="@{(v) -> controller.onClicking(v)}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/clWeight"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/ba"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="9dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/fat_icon"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/bb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="23dp"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="2sp"
+                            android:text="@string/bfm_title"
+                            android:textColor="#000000"
+                            android:textSize="13dp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="9dp"
+                            android:fontFamily="@font/pretendard_regular"
+                            android:lineSpacingExtra="2sp"
+                            android:text="@{bmiB.mainDate}"
+                            android:textColor="#bbbbbb"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toEndOf="@+id/bb"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="2023-02-08" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:id="@+id/tvFirstBFM"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/pretendard_bold"
+                                android:lineSpacingExtra="6sp"
+                                android:text="@{bmiB.first}"
+                                android:textColor="#000000"
+                                android:textSize="25dp"
+                                tools:text="106" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clBo"
+                        android:layout_width="0dp"
+                        android:layout_height="57dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/ract_rounded15_ffffff"
+                        android:onClick="@{(v) -> controller.onClicking(v)}"
+                        app:layout_constraintEnd_toStartOf="@id/clBMI"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/clWeight">
+
+                        <ImageView
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="9dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/muscle_icon"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvBoTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="23dp"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="2sp"
+                            android:text="@string/bo_title"
+                            android:textColor="#000000"
+                            android:textSize="13dp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="9dp"
+                            android:fontFamily="@font/pretendard_regular"
+                            android:lineSpacingExtra="2sp"
+                            android:text="@{bmiC.mainDate}"
+                            android:textColor="#bbbbbb"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toEndOf="@+id/tvBoTitle"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="2023-02-08" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:id="@+id/tvBoSecond"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/pretendard_bold"
+                                android:lineSpacingExtra="6sp"
+                                android:text="@{bmiC.first}"
+                                android:textColor="#000000"
+                                android:textSize="25dp"
+                                tools:text="106" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clBMI"
+                        android:layout_width="0dp"
+                        android:layout_height="57dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/ract_rounded15_ffffff"
+                        android:onClick="@{(v) -> controller.onClicking(v)}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/clBo"
+                        app:layout_constraintTop_toBottomOf="@id/clBFM">
+
+                        <ImageView
+                            android:id="@+id/bmi"
+                            android:layout_width="12dp"
+                            android:layout_height="12dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="9dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/bmi_icon"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvBmi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="23dp"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="2sp"
+                            android:text="@string/bmi_title"
+                            android:textColor="#000000"
+                            android:textSize="13dp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="9dp"
+                            android:fontFamily="@font/pretendard_regular"
+                            android:lineSpacingExtra="2sp"
+                            android:text="@{bmiD.mainDate}"
+                            android:textColor="#bbbbbb"
+                            android:textSize="10dp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toEndOf="@+id/tvBmi"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="2023-02-08" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent">
+
+                            <TextView
+                                android:id="@+id/tvFirstBMI"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/pretendard_bold"
+                                android:lineSpacingExtra="6sp"
+                                android:text="@{bmiD.first}"
+                                android:textColor="#000000"
+                                android:textSize="25dp"
+                                tools:text="106" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clDesc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/ract_rounded15_ffffff"
+                        android:onClick="@{(v) -> controller.onClicking(v)}"
+                        android:paddingStart="14dp"
+                        android:paddingTop="6dp"
+                        android:paddingEnd="14dp"
+                        android:paddingBottom="6dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/clBo">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/pretendard_medium"
+                            android:letterSpacing="0.01"
+                            android:lineSpacingExtra="8sp"
+                            android:text="@{bmiE.first}"
+                            android:textColor="#6b6b6b"
+                            android:textSize="14dp"
+                            android:textStyle="normal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="A3. 스키퍼 스마트 청진기를 통해 주기/정기적인 심박
+(맥박)수 측정하는 것을 권장합니다. 특히, 몸이 갑자기
+피로하거나 가슴 두근거림, 현기증, 어지럼증 증상이 있을
+때 심박수, 심박규칙도를 확인해 보는 걸 권장합니다.
+&apos;스키퍼 돌봄&apos;으로 연속 3회 심장 측정을 한 결과가 아래와
+같이 나올 경우 전문의 상담을 적극 권장합니다.
+
+1) 맥박수가 평소 측정된 평균치보다 20% 이상 차이가
+    난다.
+2) 평소와 다르게 맥박수가 50이하, 100이상으로 나온다.
+3) 심박규칙도가 평소 측정된 평균치보다 10~20% 이상
+     변화가 있다.
+4) 심박규칙도가 50% 이하로 측정된다." />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ns" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

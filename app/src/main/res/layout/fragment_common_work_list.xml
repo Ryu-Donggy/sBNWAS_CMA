@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoWork" />
+
+        <variable
+            name="controller"
+            type="com.familidata.sbnwas_cma.base.view.IController" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/title_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/pretendard_regular"
+            android:lineSpacingExtra="-6sp"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivBack"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="TITEL" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle">
+
+            <include
+                android:id="@+id/blp"
+                layout="@layout/item_bio_blp"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bas_lsm"
+                layout="@layout/item_bio_bas_lsm"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bas_hsm"
+                layout="@layout/item_bio_bas_hsm"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bls"
+                layout="@layout/item_bio_bls"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/ecg"
+                layout="@layout/item_bio_ecg_header"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/oxs"
+                layout="@layout/item_bio_oxs"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/htr"
+                layout="@layout/item_bio_htr"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bdy_a"
+                layout="@layout/item_bdy_a"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bdy_b"
+                layout="@layout/item_bdy_b"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bdy_c"
+                layout="@layout/item_bdy_c"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bdy_d"
+                layout="@layout/item_bdy_d"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/ract_rounded15_ffffff"
+            android:fastScrollEnabled="false"
+            android:paddingStart="13dp"
+            android:paddingEnd="20dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

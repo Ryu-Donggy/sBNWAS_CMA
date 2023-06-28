@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="controller"
+            type="com.familidata.sbnwas_cma.base.view.IController" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/ract_rounded15_ffffff">
+
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="13dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/pretendard_medium"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="6dp"
+                android:text="스마트 청진기를 통해 주기/정기적인 심박 (맥박)수 측정하는 것을 권장합니다. 특히, 몸이 갑자기 피로하거나 가슴 두근거림, 현기증, 어지럼증 증상이 있을때 심박수, 심박규칙도를 확인해 보는 걸 권장합니다. 연속 3회 심장 측정을 한 결과가 아래와 같이 나올 경우 전문의 상담을 적극 권장합니다.\n\n
+1) 맥박수가 평소 측정된 평균치보다 20% 이상 차이가 난다.\n
+2) 평소와 다르게 맥박수가 50이하, 100이상으로 나온다.\n
+3) 심박규칙도가 평소 측정된 평균치보다 10~20% 이상 변화가 있다.\n
+4) 심박규칙도가 50% 이하로 측정된다."
+                android:textColor="#6b6b6b"
+                android:textSize="14dp"
+                android:textStyle="normal" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

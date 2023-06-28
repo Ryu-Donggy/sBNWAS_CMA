@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="title"
+            type="java.lang.String" />
+
+        <variable
+            name="controller"
+            type="com.familidata.sbnwas_cma.base.view.IController" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                android:id="@+id/blp"
+                layout="@layout/item_bio_blp"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bas_lsm"
+                layout="@layout/item_bio_bas_lsm"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bas_hsm"
+                layout="@layout/item_bio_bas_hsm"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bls"
+                layout="@layout/item_bio_bls"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/ecg"
+                layout="@layout/item_bio_ecg_header"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/oxs"
+                layout="@layout/item_bio_oxs"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/htr"
+                layout="@layout/item_bio_htr"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bdy_a"
+                layout="@layout/item_bdy_a"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bdy_b"
+                layout="@layout/item_bdy_b"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bdy_c"
+                layout="@layout/item_bdy_c"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bdy_d"
+                layout="@layout/item_bdy_d"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bdy_f"
+                layout="@layout/item_bdy_f"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/bdy_g"
+                layout="@layout/item_bdy_g"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/sleep"
+                layout="@layout/item_bio_sleep"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/tmm"
+                layout="@layout/item_bio_tmm"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/calorie"
+                layout="@layout/item_bio_calorie"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/step"
+                layout="@layout/item_bio_step"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/distance"
+                layout="@layout/item_bio_distance"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/activity"
+                layout="@layout/item_bio_activity"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/choTc"
+                layout="@layout/item_bio_cho_tc"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/choTg"
+                layout="@layout/item_bio_cho_tg"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/choHdl"
+                layout="@layout/item_bio_cho_hdl"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/choLdl"
+                layout="@layout/item_bio_cho_ldl"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/ract_rounded15_ffffff"
+            android:fastScrollEnabled="false"
+            android:paddingStart="13dp"
+            android:paddingEnd="10dp"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

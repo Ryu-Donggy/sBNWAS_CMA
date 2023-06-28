@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="selected"
+            type="java.lang.String" />
+
+        <variable
+            name="controller"
+            type="com.familidata.sbnwas_cma.base.view.IController" />
+
+        <variable
+            name="bmiA"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+
+        <variable
+            name="bmiB"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+
+        <variable
+            name="bmiC"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+
+        <variable
+            name="bmiD"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+
+        <variable
+            name="bmiE"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+
+        <variable
+            name="bmiF"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+
+        <variable
+            name="bmiG"
+            type="com.familidata.sbnwas_cma.base.model.vo.VoBioBdy" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="#edeef2">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/ns"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginStart="5dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="18dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:clipToPadding="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/x"
+                    android:layout_marginTop="-10dp"
+                    android:background="@drawable/ract_rounded15_e5e6ea"
+                    android:paddingBottom="15dp"
+                    app:layout_constraintTop_toBottomOf="@id/rv">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clAllBMI"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="6dp"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="16dp"
+                            android:src="@drawable/bmi_icon"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="26dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/pretendard_semibold"
+                            android:lineSpacingExtra="2sp"
+                            android:text="@string/all_bmi2_title"
+                            android:textColor="#000000"
+                            android:textSize="20dp"
+                            android:textStyle="normal"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="14dp"
+                            android:layout_marginEnd="15dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/pretendard_regular"
+                            android:lineSpacingExtra="2sp"
+                            android:maxLines="1"
+                            android:text="@{selected}"
+                            android:textColor="#000000"
+                            android:textSize="16dp"
+                            android:textStyle="normal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/title"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="asdsaf" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clWeight"
+                            android:layout_width="0dp"
+                            android:layout_height="57dp"
+                            android:layout_marginTop="50dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}"
+                            app:layout_constraintEnd_toStartOf="@id/clBFM"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/weight_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvWeightTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/weight_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{bmiA.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvWeightTitle"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+
+                                <TextView
+                                    android:id="@+id/tvWeightSecond"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{bmiA.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="106" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clBFM"
+                            android:layout_width="0dp"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="50dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/clWeight"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:id="@+id/ba"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/fat_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/bb"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/bfm_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{bmiB.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/bb"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvFirstBFM"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{bmiB.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="106" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clBo"
+                            android:layout_width="0dp"
+                            android:layout_height="57dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}"
+                            app:layout_constraintEnd_toStartOf="@id/clBMI"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clWeight">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/muscle_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvBoTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/bo_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{bmiC.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvBoTitle"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvBoSecond"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{bmiC.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="106" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clBMI"
+                            android:layout_width="0dp"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/clBo"
+                            app:layout_constraintTop_toBottomOf="@id/clBFM">
+
+                            <ImageView
+                                android:id="@+id/bmi"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/bmi_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvBmi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/bmi_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{bmiD.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvBmi"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvFirstBMI"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{bmiD.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="106" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clBodyWater"
+                            android:layout_width="0dp"
+                            android:layout_height="57dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}"
+                            app:layout_constraintEnd_toStartOf="@id/clBMI"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/clBo">
+
+                            <ImageView
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/water_2_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tvBodyWaterTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/body_water_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{bmiF.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/tvBodyWaterTitle"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvBodyWater"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{bmiF.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="106" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clBFMPropotion"
+                            android:layout_width="0dp"
+                            android:layout_height="57dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/ract_rounded15_ffffff"
+                            android:onClick="@{(v) -> controller.onClicking(v)}"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/clBodyWater"
+                            app:layout_constraintTop_toBottomOf="@id/clBMI">
+
+                            <ImageView
+                                android:id="@+id/baba"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="9dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/fat_2_icon"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/bbba"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="23dp"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/pretendard_semibold"
+                                android:gravity="center_horizontal"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@string/bfm_propotion_title"
+                                android:textColor="#000000"
+                                android:textSize="13dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="9dp"
+                                android:fontFamily="@font/pretendard_regular"
+                                android:lineSpacingExtra="2sp"
+                                android:text="@{bmiG.mainDate}"
+                                android:textColor="#bbbbbb"
+                                android:textSize="10dp"
+                                android:textStyle="normal"
+                                app:layout_constraintStart_toEndOf="@+id/bbba"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="2023-02-08" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+
+                                <TextView
+                                    android:id="@+id/tvFirstBFMPropotion"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/pretendard_bold"
+                                    android:lineSpacingExtra="6sp"
+                                    android:text="@{bmiG.first}"
+                                    android:textColor="#000000"
+                                    android:textSize="25dp"
+                                    tools:text="106" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <TextView
+                        android:id="@+id/tvDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/ract_rounded15_ffffff"
+                        android:fontFamily="@font/pretendard_medium"
+                        android:letterSpacing="0.01"
+                        android:lineSpacingExtra="8sp"
+                        android:onClick="@{(v) -> controller.onClicking(v)}"
+                        android:paddingStart="14dp"
+                        android:paddingTop="6dp"
+                        android:paddingEnd="14dp"
+                        android:paddingBottom="6dp"
+                        android:text="@{bmiE.first}"
+                        android:textColor="#6b6b6b"
+                        android:textSize="14dp"
+                        android:textStyle="normal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/clAllBMI"
+                        tools:text="A3. 스키퍼 스마트 청진기를 통해 주기/정기적인 심박
+(맥박)수 측정하는 것을 권장합니다. 특히, 몸이 갑자기
+피로하거나 가슴 두근거림, 현기증, 어지럼증 증상이 있을
+     변화가 있다.
+4) 심박규칙도가 50% 이하로 측정된다." />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
